@@ -25,14 +25,15 @@ foreach ( glob( get_template_directory() . '/template-parts/shortcode/*.php' ) a
 if ( $shortcodes ) {
 	add_shortcode(
 		'tps',
-		function ( $atts ) {
+		function ( $atts ) use ( $shortcodes ) {
 			$atts = shortcode_atts(
 				array(
 					'name' => '',
 				),
 				$atts
 			);
-			if ( ! empty( $atts['name'] ) ) {
+			// Only allow templates that exist in template-parts/shortcode to prevent path traversal.
+			if ( '' !== $atts['name'] && isset( $shortcodes[ $atts['name'] ] ) ) {
 				ob_start();
 				get_template_part( 'template-parts/shortcode/' . $atts['name'] );
 				$template = ob_get_contents();
