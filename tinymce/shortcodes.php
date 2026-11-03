@@ -12,36 +12,12 @@
 
 $shortcodes = array();
 
-foreach ( glob( get_template_directory() . '/template-parts/shortcode/*.php' ) as $file ) {
+foreach ( template_part_shortcode_get_template_files() as $filename => $file ) {
 	$headers                 = get_file_data( $file, array( 'Label' => 'Template Label' ) );
-	$filename                = pathinfo( $file, \PATHINFO_FILENAME );
 	$shortcodes[ $filename ] = array(
 		'label'    => $headers['Label'],
 		'fields'   => array(),
 		'template' => '[tps name="' . $filename . '"]',
-	);
-}
-
-if ( $shortcodes ) {
-	add_shortcode(
-		'tps',
-		function ( $atts ) use ( $shortcodes ) {
-			$atts = shortcode_atts(
-				array(
-					'name' => '',
-				),
-				$atts
-			);
-			// Only allow templates that exist in template-parts/shortcode to prevent path traversal.
-			if ( '' !== $atts['name'] && isset( $shortcodes[ $atts['name'] ] ) ) {
-				ob_start();
-				get_template_part( 'template-parts/shortcode/' . $atts['name'] );
-				$template = ob_get_contents();
-				ob_end_clean();
-
-				return $template;
-			}
-		}
 	);
 }
 
