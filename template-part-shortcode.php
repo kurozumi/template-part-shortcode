@@ -60,7 +60,7 @@ class TemplatePartShortcodeTinyMCE {
 	 */
 	public function localize() {
 		wp_localize_script( 'editor', 'templatePartShortcodeEditor', [
-			'nonce'      => wp_create_nonce( 'tempalte-part-shortcord-editor-nonce' ),
+			'nonce'      => wp_create_nonce( 'template-part-shortcode-editor-nonce' ),
 			'shortcodes' => $this->get_shortcodes(),
 			'editor'     => [
 				'menuTooltip' => __( 'Templatecodes', 'template-part-shortcode' ),
