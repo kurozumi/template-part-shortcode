@@ -7,6 +7,9 @@
  * Text Domain:     template-part-shortcode
  * Domain Path:     /languages
  * Version:         0.1.1
+ * Requires at least: 4.6
+ * Tested up to:    7.1
+ * Requires PHP:    7.4
  *
  * @package         Template_Part_Shortcode
  */
