@@ -6,7 +6,7 @@
  * Author URI:      https://a-zumi.net
  * Text Domain:     template-part-shortcode
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         0.1.1
  *
  * @package         Template_Part_Shortcode
  */
